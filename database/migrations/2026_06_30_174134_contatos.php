@@ -15,7 +15,15 @@ class Contatos extends Migration
     {
         Schema::create('contatos', function (Blueprint $table) {
             $table->id();
+            $table->string('cpf');
+            $table->string('cep');
+            $table->string('numero');
+            $table->string('whatsapp');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
