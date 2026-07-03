@@ -13,11 +13,11 @@ class Produto extends Model
     protected $table = 'produtos';
 
     //funcão para criar relacionamentos
-    public function user()
-    {
-        
-        return $this->belongsTo(User::class, 'id_user');
-        
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');   
+    }
+    public function categoria(){
+        return $this->belongsTo(Categoria::class, 'id_categoria');
     }
     
 }

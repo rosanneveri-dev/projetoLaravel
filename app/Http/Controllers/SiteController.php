@@ -10,7 +10,7 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::paginate(6);
+        $produtos = Produto::paginate(3);
         //return "index";
         //return dd($produtos);
           
@@ -27,7 +27,18 @@ class SiteController extends Controller
         
         $produto = Produto::where('slug', $slug)->first();
 
-        return view('site.datails', compact('produto'));
+        return view('site.details', compact('produto'));
+        
+        
+     }
+    
+     public function categoria($id)
+    {
+
+        
+        $produtos = Produto::where('id_categoria', $id)->get();
+
+        return view('site.categoria', compact('produtos'));
         
         
      }
