@@ -38,13 +38,19 @@
           <tr>
             <td><img src="{{$item->attributes->image}}" alt="" width="70" class="responsive-img circle"></td>
             <td>{{$item->name}}</td>
-            <td>{{$item->price}}</td>
+            <td>R$ {{number_format($item->price, 2,',','.')}}</td>
             
             <td><input style="width: 40px; font-weight:900" class="white center" type="number" name="quantity" value="{{$item->quantity}}"></td>
             <td>
-                <button class="btn-floating waves-effect waves-light orange"><i class="material-icons">add</i>refresh</button>
-                <button class="btn-floating waves-effect waves-light ref"><i class="material-icons">add</i>delete</button>
-                </td>
+                
+                <button type="button" class="btn-floating waves-effect waves-light green"><i class="material-icons left">refresh</i></button>
+                
+                <form name="form_delete"action="{{route('site.removeCarrinho')}}" method="POST"enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{$item->id}}">
+                <button type="button" class="btn-floating waves-effect waves-light red" onclick="document.forms['form_delete'].submit()"><i class="material-icons">delete</i></button>
+                </form>
+            </td>
             </tr>
         @endforeach  
         

@@ -16,7 +16,7 @@
             Categoria: {{$produto->categoria->nome}}
 
         </p>
-        <form name="meu_form" action="{{route('site.addcarrinho')}}" method="POST" enctype="multipart/form-data">
+        <form name="form_produto" action="{{route('site.addcarrinho')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name ="id" value="{{ $produto->id }}">
         <input type="hidden" name ="name" value="{{ $produto->nome }}">
@@ -24,7 +24,7 @@
         <input type="number" name ="qtn" value="1">
         <input type="hidden" name ="img" value="{{$produto->imagem}}">
                                 
-        <button class="btn orange btn-large" onclick="document.forms['meu_form'].submit()">Comprar</button>
+        <button class="btn orange btn-large" onclick="document.forms['form_produto'].submit()">Comprar</button>
          </form>
         
     </div>
