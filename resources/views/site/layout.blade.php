@@ -28,7 +28,7 @@
         <ul id="nav-mobile"class= "left">        
         <li><a href="{{route('site.index')}}">Home</a></li>
         <li><a href="#" class="dropdown-trigger" data-target='dropdown1'>Categorias<i class="material-icons right">expand_more</i></a></li>
-        <li><a href="l">Carrinho</a></li>      
+        <li><a href="{{route('site.carrinho')}}">Carrinho</a></li>      
         </ul>
       </div>
       

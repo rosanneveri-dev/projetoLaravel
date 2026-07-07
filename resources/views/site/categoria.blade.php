@@ -3,7 +3,7 @@
 @section('conteudo')
 
 <div class="row container">
-    <h3>Categoria: </h3>
+    <h3></h3>
     
     {{--for que lista os produtos por categoria--}}
     @foreach ($produtos as $produto)
@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-image"> 
                 <img src="{{$produto->imagem}}" class="responsive-img">
-                <a href="{{route('site.categoria', $produto->nome) }}"class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">visibility</i></a>
+                <a href="{{route('site.details', $produto->slug) }}"class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">visibility</i></a>
                 </div>
                 
                 <div class="card-content">
