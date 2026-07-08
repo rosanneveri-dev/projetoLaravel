@@ -12,10 +12,10 @@ Route::get('/produto/{slug}', [SiteController::class, 'details'])->name('site.de
 Route::get('/categoria/{id}', [SiteController::class, 'categoria'])->name('site.categoria');
 
 Route::get('/carrinho', [CarrinhoController::class, 'carrinhoLista'])->name('site.carrinho');
-Route::post('/carrinho', [CarrinhoController::class, 'adicionaCarrinho'])->name('site.addcarrinho');
-Route::post('/remove', [CarrinhoController::class, 'removeCarrinho'])->name('site.removeCarrinho');
-
-
+Route::post('/carrinho', [CarrinhoController::class, 'adicionarCarrinho'])->name('site.addcarrinho');
+Route::delete('/remover/{id}', [CarrinhoController::class, 'removerCarrinho'])->name('site.deletecarrinho');
+Route::put('/atualizar/{id}', [CarrinhoController::class, 'atualizarCarrinho'])->name('site.putcarrinho');
+Route::get('/limpar', [CarrinhoController::class, 'limparCarrinho'])->name('site.clearcarrinho');
 /*
 //ROUTES
 Route::get('/', function () {
