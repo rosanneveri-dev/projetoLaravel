@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
+
 
 Route::resource('produtos', ProdutoController::class);
 
@@ -16,6 +19,18 @@ Route::post('/carrinho', [CarrinhoController::class, 'adicionarCarrinho'])->name
 Route::delete('/remover/{id}', [CarrinhoController::class, 'removerCarrinho'])->name('site.deletecarrinho');
 Route::put('/atualizar/{id}', [CarrinhoController::class, 'atualizarCarrinho'])->name('site.putcarrinho');
 Route::get('/limpar', [CarrinhoController::class, 'limparCarrinho'])->name('site.clearcarrinho');
+
+
+//route da view do form do login
+Route::view('/login', 'login.form')->name('login.form');
+//route de validação
+Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
+
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+
+
+
 /*
 //ROUTES
 Route::get('/', function () {
