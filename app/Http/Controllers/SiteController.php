@@ -26,6 +26,7 @@ class SiteController extends Controller
 
         
         $produto = Produto::where('slug', $slug)->first();
+        Gate::authorize('ver-produto', $produto);
 
         return view('site.details', compact('produto'));
         
