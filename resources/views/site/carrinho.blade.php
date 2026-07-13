@@ -1,4 +1,3 @@
-```blade
 @extends('site.layout')
 @section('title', 'Carrinho')
 @section('conteudo')
