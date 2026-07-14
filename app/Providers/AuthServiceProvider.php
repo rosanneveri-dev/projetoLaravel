@@ -15,7 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+
+        'App\Models\Produto' => 'App\Policies\ProdutoPolicy',
     ];
 
     /**
@@ -26,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Gate::define('ver-produto', function(User $user, Produto $produto){
-            return $user->id ==$produto->id_user;
+        Gate::define('ver-produto', function (User $user, Produto $produto) {
+            return $user->id === $produto->id_user;
         });
     }
 }

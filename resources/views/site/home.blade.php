@@ -11,8 +11,11 @@
                 <div class={{ $produto->imagem }}> 
                     
                 <img src="{{$produto->imagem}}" class="responsive-img">
-                
+                {{--uso co CAN--}}
+                {{--uso do CANNOT--}}
                 <a href="{{route('site.details', $produto->slug) }}"class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">visibility</i></a>
+                
+                
             </div>
             <div class="card-content">
                 <span class="card-title">{{ $produto->nome }}</span>
