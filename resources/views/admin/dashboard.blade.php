@@ -135,10 +135,10 @@ var ctx = document.getElementById('myChart2');
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: [{{ $categoriaLabel }}],
+        labels: [{!! $catLabel !!}],
         datasets: [{
             label: 'Visitas',
-            data: [{{ $categoriasTotal }}],
+            data: [{{ $catTotal }}],
             backgroundColor: [
                 'rgba(255, 99, 132)',
                 'rgba(54, 162, 235)',                         

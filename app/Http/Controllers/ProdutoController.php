@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Produto;
+use PhpParser\Node\Expr\PreDec;
 
 class ProdutoController extends Controller
 {
@@ -14,15 +15,16 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::paginate(6);
+        $produtos = Produto::paginate(5);
+        return view('admin.produtos', compact('produtos'));
         //return "index";
         //return dd($produtos);
-          
+
         //$frutas = ['banana', 'maça', 'laranja' ];
         //return view('site.home', compact('frutas'));//ou site.empresa 
-        
-        
-        return view('site.home', compact('produtos'));//ou site.empresa 
+
+
+        //return view('site.home', compact('produtos')); //ou site.empresa 
     }
 
     /**
@@ -52,10 +54,7 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        
-    }
+    public function show($id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -88,6 +87,8 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produto = Produto::find($id);
+        $produto->delete();
+        return redirect()->route('admin.produtos')->with('sucesso', 'Produto removido com sucesso!');
     }
 }
