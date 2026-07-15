@@ -32,11 +32,12 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request) {
+        
+        $produto = Produto::all();
+        $produto = Produto::create($produto);
+        
     }
-
     /**
      * Store a newly created resource in storage.
      *
