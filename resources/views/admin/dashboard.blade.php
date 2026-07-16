@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admin.layout_admin')
 @section('titulo', 'Dashboard')
 
 @section('conteudo')
@@ -7,22 +7,7 @@
 
 
 <!-- Dropdown Structure -->
-    <ul id='dropdown2' class='dropdown-content'>     
-      <li><a href="{{ route('admin.dashboard')}}">Dashboard</a></li>
-      <li><a href="{{ route('login.logout')}}">Sair</a></li> 
-    </ul>
-
-
-    <nav class="red">
-        <div class="nav-wrapper container ">
-            <a href="#" class="center brand-logo " href="index.html"><img src="{{asset('img/logo.png')}}"></a>          
-          <ul class="right ">                                 
-              <li class="hide-on-med-and-down"><a href="#" onclick="fullScreen()"><i class="material-icons">settings_overscan</i> </a> </li>
-              <li><a href="#" class="dropdown-trigger" data-target='dropdown2'>Olá {{ Auth::user()->firstName }}<i class="material-icons right">expand_more</i> </a></li>     
-          </ul>
-          <a href="#" data-target="slide-out" class="sidenav-trigger left  show-on-large"><i class="material-icons">menu</i></a>
-        </div>
-      </nav>
+   
     
 
     <ul id="slide-out" class="sidenav " >

@@ -24,7 +24,7 @@
     </ul>
 
 
-    <nav class="red">
+    <nav class="blue">
         <div class="nav-wrapper container ">
             <a href="#" class="center brand-logo " href="index.html"><img src="{{asset('img/logo.png')}}"></a>          
           <ul class="right ">                                 

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admin.layout_admin')
 
 @section('conteudo')
 @section('titulo', 'Produtos')
@@ -10,7 +10,7 @@
     </a>   
   </div>
 
-  @include('admin.produtos.create') 
+  @include('admin.produto.create') 
   
   
   
@@ -53,7 +53,7 @@
                 @foreach ($produtos as $produto)
                       
                   <tr>
-                      <td><img src="{{$produto->imagem}}" class="circle"></td>
+                      <td><img src="{{ url('storage/$produto->imagem')}}" class="circle"></td>
                       <td>{{$produto->id}}</td>
                       <td>{{$produto->nome}}</td>                    
                       <td>R$ {{number_format($produto->preco, 2, ',', '.')}}</td>
@@ -62,7 +62,7 @@
                         
                         
                         <a href="#delete-{{$produto->id}}" class="btn-floating modal-trigger waves-effect waves-light red"><i class="material-icons">delete</i></a></td>
-                        @include('admin.produtos.delete')
+                        @include('admin.produto.delete')
 
 
                     </tr>

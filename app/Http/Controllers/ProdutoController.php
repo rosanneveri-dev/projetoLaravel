@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use \App\Models\Produto;
 use PhpParser\Node\Expr\PreDec;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProdutoController extends Controller
 {
@@ -16,7 +20,8 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::paginate(5);
-        return view('admin.produtos', compact('produtos'));
+        $categorias = Categoria::all();
+        return view('admin.produtos', compact('produtos', 'categorias'));
         //return "index";
         //return dd($produtos);
 
@@ -32,11 +37,10 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request) {
-        
-        $produto = Produto::all();
-        $produto = Produto::create($produto);
-        
+    public function create(Request $request)
+    {
+
+        //
     }
     /**
      * Store a newly created resource in storage.
@@ -46,7 +50,27 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $request->validate([
+
+            'nome'         => 'required|string|max:255',
+            'preco'        => 'required|numeric|min:0',
+            'descricao'    => 'nullable|string',
+            'id_categoria' => 'required|exists:categorias,id',
+
+            'imagem'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ]);
+        $produto = $request->only(['nome', 'preco', 'descricao', 'id_categoria']);
+        //aciona posição no array (pegando o usuario validado melhor pratica)
+        $produto['id_user'] = Auth::id();
+
+        if ($request->hasFile('imagem')) {
+            $produto['imagem'] = $request->file('imagem')->store('produtos', 'public');
+        }
+        $produto['slug'] = Str::slug($request->nome);
+        $produto = Produto::create($produto);
+        return redirect()->route('admin.produtos')->with('sucesso', 'Produto cadastrado com sucesso!');
     }
 
     /**
