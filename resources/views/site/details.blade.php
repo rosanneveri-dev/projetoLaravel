@@ -11,7 +11,7 @@
 
     <div class="col s12 m6" >
         <h4>{{ $produto->nome }}</h4>
-        <h4>R$ </h4>
+        <h4>R${{number_format( $produto->preco) }} </h4>
         <p>{{ $produto->descricao }}</p>
         <p> Postado por: {{ $produto->user->firstName}}<br>
             Categoria: {{$produto->categoria->nome}}

@@ -34,6 +34,7 @@
               </form>
             </div>
           </nav>     
+          
 
             <div class="card z-depth-4 registros" >
             <table class="striped ">
@@ -44,6 +45,8 @@
                     <th>Produto</th>
                       
                       <th>Preço</th>
+                      <th>Quantidade</th>
+
                       <th>Categoria</th>
                       <th></th>
                   </tr>
@@ -53,13 +56,14 @@
                 @foreach ($produtos as $produto)
                       
                   <tr>
-                      <td><img src="{{ url('storage/$produto->imagem')}}" class="circle"></td>
+                      <td><img src="{{ url("storage/{$produto->imagem}")}}" class="circle"></td>
                       <td>{{$produto->id}}</td>
                       <td>{{$produto->nome}}</td>                    
                       <td>R$ {{number_format($produto->preco, 2, ',', '.')}}</td>
                       <td>{{$produto->categoria->nome}}</td>
-                      <td><a class="btn-floating  waves-effect waves-light orange"><i class="material-icons">mode_edit</i></a>
-                        
+                      <td>
+                        <a class=" #put-{{$produto->id}} btn-floating  waves-effect waves-light orange"><i class="material-icons">mode_edit</i></a>
+                        @include('admin.produto.put')
                         
                         <a href="#delete-{{$produto->id}}" class="btn-floating modal-trigger waves-effect waves-light red"><i class="material-icons">delete</i></a></td>
                         @include('admin.produto.delete')
@@ -67,6 +71,7 @@
 
                     </tr>
                 @endforeach
+                
                 </tbody>
               </table>
             </div> 

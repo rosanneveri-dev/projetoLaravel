@@ -1,0 +1,1 @@
+php artisan storage:link : cria uma pasta storage de produtos dentro de public(as imagens de dentro do projeto agora aparecem );

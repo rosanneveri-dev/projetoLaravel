@@ -99,9 +99,18 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
+
     {
-        //
+        Produto::update($request->id, [
+            'quantity' => [
+                'relative' => false,
+                'value' => abs($request->quantity),
+            ],
+        ]);
+
+        //dd($produto);
+        return view('admin.putprodutos', compact('produto'));
     }
 
     /**
